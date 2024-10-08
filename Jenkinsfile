@@ -19,9 +19,9 @@ pipeline {
         stage('Build Node.js') {
             steps {
                 script {
-                    def nodePath = "simple-reactjs-app-master"
-                    def dockerfileNode = "React/Dockerfile"
-                    if (fileExists(nodePath)) {
+                    def nodePath = "."
+                    def dockerfileNode = "Dockerfile"
+                    if (fileExists(nodepath)) {
                         bat "docker build -f ${dockerfileNode} -t ${nodeImage}:latest ${nodePath}"
                         bat "docker tag ${nodeImage}:latest sureshnangina/mern-node:latest"
                     } else {
